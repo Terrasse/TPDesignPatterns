@@ -2,7 +2,7 @@ package eu.telecomnancy.sensor;
 
 import java.util.Random;
 
-public class LegacyTemperatureSensor {
+public class LegacyTemperatureSensor extends Observable{
     private boolean state = false;
     private double start = -20;
     private double end = 100;

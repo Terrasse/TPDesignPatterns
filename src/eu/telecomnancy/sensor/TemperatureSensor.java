@@ -2,7 +2,7 @@ package eu.telecomnancy.sensor;
 
 import java.util.Random;
 
-public class TemperatureSensor implements ISensor {
+public class TemperatureSensor extends ISensor  {
     boolean state;
     double value = 0;
 
@@ -23,8 +23,11 @@ public class TemperatureSensor implements ISensor {
 
     @Override
     public void update() throws SensorNotActivatedException {
-        if (state)
-            value = (new Random()).nextDouble() * 100;
+        if (state){
+        	value = (new Random()).nextDouble() * 100;
+        	notifyObservers();
+        }
+            
         else throw new SensorNotActivatedException("Sensor must be activated before acquiring new values.");
     }
 

@@ -6,7 +6,7 @@ package eu.telecomnancy.sensor;
  * Date: 13/12/13
  * Time: 18:07
  */
-public class SensorProxy implements ISensor {
+public class SensorProxy extends ISensor {
     private ISensor sensor;
     private SensorLogger log;
 
