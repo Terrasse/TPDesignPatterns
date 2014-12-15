@@ -8,4 +8,5 @@ package eu.telecomnancy.sensor;
  */
 public interface SensorLogger {
     public void log(LogLevel level, String message);
+    public void log(String methode, String value);
 }
