@@ -70,7 +70,7 @@ public class SensorView extends JPanel implements Observer{
 	@Override
 	public void update(Observable o) {
 		try {
-			this.value.setText(" "+((ISensor) (o)).getValue());
+			this.value.setText(" "+sensor.getValue());
 		}
 		catch (SensorNotActivatedException e) {
 			// TODO Auto-generated catch block
