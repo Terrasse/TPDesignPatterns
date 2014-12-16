@@ -1,5 +1,9 @@
 package eu.telecomnancy.sensor;
-
+/**
+ * Cette classe abtraite est réalisé à l'aide du Decorator Design Pattern
+ * 
+ * @author Terry DERVAUX
+ */
 public class Fahrenheit extends TemperatureSensorDecorator{
 
 	public Fahrenheit(ISensor newTemperatureSensor) {
@@ -12,7 +16,6 @@ public class Fahrenheit extends TemperatureSensorDecorator{
      * @see eu.telecomnancy.sensor.ISensor#getValue()
      */
     public double getValue() throws SensorNotActivatedException{
-    	System.out.println(tempTemperatureSensor.getValue()+"°C");
     	return tempTemperatureSensor.getValue()*1.8;    
     }
     

@@ -1,5 +1,9 @@
 package eu.telecomnancy.sensor;
-
+/**
+ * Cette classe abtraite est réalisé à l'aide du Decorator Design Pattern
+ * 
+ * @author Terry DERVAUX
+ */
 public class Arrondi extends TemperatureSensorDecorator{
 
 	public Arrondi(ISensor newTemperatureSensor) {

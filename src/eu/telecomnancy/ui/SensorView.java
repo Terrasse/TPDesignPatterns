@@ -3,7 +3,11 @@ package eu.telecomnancy.ui;
 import eu.telecomnancy.sensor.ISensor;
 import eu.telecomnancy.sensor.Observable;
 import eu.telecomnancy.sensor.Observer;
+import eu.telecomnancy.sensor.SensorButton;
 import eu.telecomnancy.sensor.SensorNotActivatedException;
+import eu.telecomnancy.sensor.TurnOffSensor;
+import eu.telecomnancy.sensor.TurnOnSensor;
+import eu.telecomnancy.sensor.UpdateSensor;
 
 import javax.swing.*;
 
@@ -14,7 +18,7 @@ import java.awt.event.ActionListener;
 public class SensorView extends JPanel implements Observer{
     private ISensor sensor;
 
-    private JLabel value = new JLabel("N/A °C");
+    private JLabel value = new JLabel("N/A");
     private JButton on = new JButton("On");
     private JButton off = new JButton("Off");
     private JButton update = new JButton("Acquire");
@@ -32,29 +36,31 @@ public class SensorView extends JPanel implements Observer{
 
         this.add(value, BorderLayout.CENTER);
 
-
+        TurnOnSensor turnOnSensor=new TurnOnSensor(this.sensor);
+        final SensorButton buttonOn=new SensorButton(turnOnSensor);
+        TurnOffSensor turnOffSensor=new TurnOffSensor(this.sensor);  
+        final SensorButton buttonOff=new SensorButton(turnOffSensor);
+        UpdateSensor updateSensor=new UpdateSensor(this.sensor);
+        final SensorButton buttonUpdate=new SensorButton(updateSensor);
+        
         on.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sensor.on();
+                buttonOn.press();
             }
         });
 
         off.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sensor.off();
+               buttonOff.press();
             }
         });
 
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    sensor.update();
-                } catch (SensorNotActivatedException sensorNotActivatedException) {
-                    sensorNotActivatedException.printStackTrace();
-                }
+               buttonUpdate.press();
             }
         });
 
